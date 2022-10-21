@@ -46,6 +46,7 @@ func applyRouter(ctx context.Context) (string, error) {
 	if err != nil {
 		return "", err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
 		respBody, _ := ioutil.ReadAll(resp.Body) //true/flase
 		return string(respBody), nil
@@ -63,6 +64,7 @@ func cardInfo(ctx context.Context) (model.CardInfoResp, error) {
 	if err != nil {
 		return cardInfoResp, err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
 		respBody, _ := ioutil.ReadAll(resp.Body)
 		err = json.Unmarshal(respBody, &cardInfoResp)
@@ -83,6 +85,7 @@ func roundInfo(ctx context.Context, roundNum int) (model.RoundInfoResp, error) {
 	if err != nil {
 		return roundResp, err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
 		respBody, _ := ioutil.ReadAll(resp.Body)
 		err = json.Unmarshal(respBody, &roundResp)
@@ -103,6 +106,7 @@ func cardOperate(ctx context.Context, roundNum int, cardsInfo string) (string, e
 	if err != nil {
 		return "", err
 	}
+	defer resp.Body.Close()
 	if resp.StatusCode == 200 {
 		respBody, _ := ioutil.ReadAll(resp.Body) //ture/false
 		return string(respBody), nil
