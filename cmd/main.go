@@ -54,7 +54,7 @@ func applyRouter(ctx context.Context) (string, error) {
 }
 
 // cardInfo 获取整体⽐赛信息接口
-func cardInfo(ctx context.Context, roundNum int) (model.CardInfoResp, error) {
+func cardInfo(ctx context.Context) (model.CardInfoResp, error) {
 	cardInfoResp := model.CardInfoResp{}
 	url := urlDomain + "/card/info?userToken=" + UserToken + "&startTime=" +
 		strconv.FormatInt(time.Now().Add(-time.Hour).Unix() * 1000, 10) + "&endTime=" + strconv.FormatInt(time.Now().Unix() * 1000, 10)

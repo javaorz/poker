@@ -2,9 +2,13 @@ package model
 
 // RoundInfoResp 获取某场比赛信息
 type RoundInfoResp struct {
-	PreCardsInfo   map[string][]int `json:"preCardsInfo"`
-	FinalCardsInfo map[string][]int `json:"finalCardsInfo"`
-	WinnerGroup    string           `json:"winnerGroup"`
+	Id            int              `json:"id"`
+	StartTime     string           `json:"startTime"`
+	EndTime       string           `json:"endTime"`
+	GroupNames    []string         `json:"groupNames"`
+	PerCardInfo   map[string][]int `json:"perCardInfo"`
+	FinalCardInfo map[string][]int `json:"finalCardInfo"`
+	WinnerGroup   string           `json:"winnerGroup"`
 }
 
 // RoundInfoResp 获取全部比赛信息
@@ -16,7 +20,7 @@ type CardInfoResp struct {
 
 type RoundInfo struct {
 	RoundNum    int      `json:"roundNum"`
-	StartTime   int64    `json:"startTime"`
+	StartTime   string   `json:"startTime"`
 	GroupNames  []string `json:"groupNames"`
 	WinnerGroup string   `json:"winnerGroup"`
 }
