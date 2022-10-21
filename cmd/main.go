@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
-	"net"
 	"net/http"
 	"poker/model"
 	"strconv"
@@ -17,22 +16,8 @@ const (
 	UserToken = "7f4afd39-727e-4d4a-9e60-e76d79ac4d78"
 )
 
-var client = &http.Client{
-	Timeout: time.Second * 60,
-	Transport: &http.Transport{
-		Proxy: http.ProxyFromEnvironment,
-		DialContext: (&net.Dialer{
-			Timeout:   5 * time.Second,
-			KeepAlive: 300 * time.Second,
-			DualStack: true,
-		}).DialContext,
-		MaxIdleConns:          150,
-		IdleConnTimeout:       90 * time.Second,
-		TLSHandshakeTimeout:   5 * time.Second,
-		ExpectContinueTimeout: 1 * time.Second,
-		MaxIdleConnsPerHost:   100,
-	},
-}
+var client = &http.Client{}
+
 
 func main() {
 
